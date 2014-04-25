@@ -31,7 +31,7 @@ alldata <- alldata[,c(1,2,as.numeric(features[loc+2,1]))]
 colnames(alldata)[3:ncol(alldata)]<-features[loc,2]
 
 # Step3 & Step4: descriptive activity names
-activity_names <- as.factor(alldat$Label)
+activity_names <- as.factor(alldata$Label)
 levels(activity_names) <- c("walk","walk up","walk down","sit","stand","lay")
 alldata[,1] <- activity_names
 
@@ -49,9 +49,8 @@ for (i in 1:length(unique_subject)) {
 }
 colnames(summary_data) <- colnames(alldata)
 
-
-
-
+write.table(summary_data[,1:ncol(summary_data)],"summary_data.csv",sep=",",row.names=FALSE)
+print("Data is successfully saved in summary_data.csv")
 
 
 
